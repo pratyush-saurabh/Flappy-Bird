@@ -51,8 +51,8 @@ def mainGame():
 
     playerVelY = 0
     playerFlapV = -8
-    playerAcc = 1 #Approaching x gradually by adding this to vel. Hence if small, giving extra buffer time to react, but if extra small then it will take much time to come down.
-    playerMaxVelY = 8 #Comes down with this max vel. 1,2,...8(So keep it small) gradually.
+    playerAcc = 1 
+    playerMaxVelY = 8 
     playerFlapped = False
     
     while True:
@@ -67,12 +67,12 @@ def mainGame():
                     GAME_SOUNDS['wing'].play()
 
         if playerVelY < playerMaxVelY and not playerFlapped: #That is only when space is not pressed, if space is pressed then move it by -8 (towards x axis) fastly.
-            playerVelY += playerAcc #Not used loop, so at a time only one value.
-        playerFlapped = False #If changed above then this condn would always be false.
+            playerVelY += playerAcc 
+        playerFlapped = False 
             
-        #MOVES BIRD VERTICALLY: (Inc. playerY only when not reached to ground) i.e adding min. of PlayerVelyY and diff. b/w player and base.
+        #MOVES BIRD VERTICALLY: (Inc. playerY only when not reached to ground) 
         playerHeight = GAME_SPRITES['player'].get_height()
-        playery += min(playerVelY, basey - playery - playerHeight) #If player is near ground then add only the "diff. between player and ground"
+        playery += min(playerVelY, basey - playery - playerHeight) 
    
         #MOVE PIPES TO THE LEFT: (Moving pipes only, so that it will appear that bird is moving relatively)
         for up,lp in zip(upperPipes, lowerPipes): #Used for loop so that both the two pipes move after by after.
